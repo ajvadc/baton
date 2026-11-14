@@ -90,3 +90,4 @@ async def fetch_github_repo_activity(repo_url: str) -> List[Dict[str, Any]]:
             })
 
     return chunks
+

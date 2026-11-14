@@ -15,3 +15,4 @@ Write-Host ""
 Write-Host "Baton is running!" -ForegroundColor Green
 Write-Host "Frontend: http://localhost:3000" -ForegroundColor Green
 Write-Host "API Docs: http://localhost:8000/docs" -ForegroundColor Green
+

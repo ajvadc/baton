@@ -19,3 +19,4 @@
 - Secrets and environment variables are managed via Google Secret Manager.
 - Database backups run daily at 02:00 UTC via Cloud SQL automated backups.
 - Note: Production webhook signing secrets must be rotated every semester by the designated payment gateway owner.
+

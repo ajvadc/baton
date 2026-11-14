@@ -25,3 +25,4 @@
 2. **Recurring Issue: Redis Seat Reservation Lock**:
    - When 500+ users hit the ticket checkout simultaneously, Redis locks expire prematurely after 60 seconds if payment provider webhook takes 75 seconds.
    - Workaround: Manually restart worker queue or increase `LOCK_EXPIRY_SECONDS` to 180 seconds.
+

@@ -132,3 +132,4 @@ export const EvidenceViewerModal: React.FC<Props> = ({ claim, onClose }) => {
     </div>
   );
 };
+

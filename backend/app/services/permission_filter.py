@@ -56,3 +56,4 @@ def filter_claims_by_role(claims: List[Dict[str, Any]], role: str, area_filter: 
             filtered.append(claim)
 
     return filtered
+

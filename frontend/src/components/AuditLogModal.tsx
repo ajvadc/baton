@@ -107,3 +107,4 @@ export const AuditLogModal: React.FC<Props> = ({ projectId, isOpen, onClose }) =
     </div>
   );
 };
+

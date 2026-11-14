@@ -47,3 +47,4 @@ def generate_leaver_questions_from_claims(claims: List[Dict[str, Any]]) -> List[
             })
 
     return questions
+

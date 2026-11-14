@@ -5,3 +5,4 @@ EV-103,Redis Ticket Concurrency Lock,Alex Rivera,In Progress,High,EV-101,PR #42 
 EV-104,Stripe Burst Webhook Retries,Rohan Patel,To Do,Medium,EV-102,Worker celery queue crashes under heavy payload.
 EV-105,Migrate Twilio Account to Club Card,Alex Rivera,Blocked,High,None,Blocker: Club treasurer credit card approval pending.
 EV-106,Production Webhook Signing Secret Rotation,Unassigned,To Do,Critical,EV-102,Missing documentation on where production signing key is kept!
+

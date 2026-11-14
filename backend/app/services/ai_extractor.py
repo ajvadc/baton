@@ -268,3 +268,4 @@ def extract_claims_fallback(chunks: List[Dict[str, Any]]) -> List[Dict[str, Any]
     extracted.extend(first_week_plan)
 
     return extracted
+

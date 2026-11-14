@@ -16,6 +16,7 @@ export const ConnectSourcesTab: React.FC<Props> = ({
   onSourcesUpdated,
   onProceedToReconstruct,
 }) => {
+  const safeSources = Array.isArray(sources) ? sources : [];
   const [uploading, setUploading] = useState(false);
   const [sourceType, setSourceType] = useState('doc');
   const [repoUrl, setRepoUrl] = useState('');
@@ -208,10 +209,10 @@ export const ConnectSourcesTab: React.FC<Props> = ({
       <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h2 className="text-sm font-bold text-white">Ingested Source Activity ({sources.length})</h2>
+            <h2 className="text-sm font-bold text-white">Ingested Source Activity ({safeSources.length})</h2>
             <p className="text-xs text-slate-400">Chunks indexed, redacted, and ready for claim reconstruction</p>
           </div>
-          {sources.length > 0 && (
+          {safeSources.length > 0 && (
             <button
               onClick={onProceedToReconstruct}
               className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-slate-950 font-bold text-xs transition shadow-lg shadow-teal-500/20"
@@ -222,13 +223,13 @@ export const ConnectSourcesTab: React.FC<Props> = ({
           )}
         </div>
 
-        {sources.length === 0 ? (
+        {safeSources.length === 0 ? (
           <div className="py-12 text-center border border-dashed border-slate-800 rounded-xl text-slate-400 text-xs">
             No sources connected yet. Upload files above or click <strong>&quot;Load Demo: Events App&quot;</strong> in the top header.
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-            {sources.map((s) => (
+            {safeSources.map((s) => (
               <div
                 key={s.id}
                 className="p-4 rounded-xl border border-slate-800 bg-slate-950/60 hover:border-slate-700/80 transition flex flex-col justify-between"

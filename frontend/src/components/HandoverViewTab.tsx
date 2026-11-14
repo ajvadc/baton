@@ -106,6 +106,12 @@ export const HandoverViewTab: React.FC<Props> = ({
 
   const isReceiptAcknowledged = !!data.receipt;
 
+  const safeDecisions = Array.isArray(data.decisions) ? data.decisions : [];
+  const safeOwnership = Array.isArray(data.ownership) ? data.ownership : [];
+  const safeRisks = Array.isArray(data.risks) ? data.risks : [];
+  const safeDependencies = Array.isArray(data.dependencies) ? data.dependencies : [];
+  const safeFirstWeekPlan = Array.isArray(data.first_week_plan) ? data.first_week_plan : [];
+
   return (
     <div className="space-y-8 animate-in fade-in duration-300">
       {/* Role Switcher & Security Banner */}
@@ -209,7 +215,7 @@ export const HandoverViewTab: React.FC<Props> = ({
       </div>
 
       {/* Section 1: First-Week Plan (Tactical Onboarding) */}
-      {data.first_week_plan && data.first_week_plan.length > 0 && (
+      {safeFirstWeekPlan.length > 0 && (
         <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800">
           <div className="flex items-center gap-2 mb-2">
             <Calendar className="w-4 h-4 text-amber-400" />
@@ -220,7 +226,7 @@ export const HandoverViewTab: React.FC<Props> = ({
           </p>
 
           <div className="space-y-3">
-            {data.first_week_plan.map((item) => (
+            {safeFirstWeekPlan.map((item) => (
               <div
                 key={item.id}
                 onClick={() => onSelectClaim(item)}
@@ -265,7 +271,7 @@ export const HandoverViewTab: React.FC<Props> = ({
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {data.decisions.map((dec) => (
+          {safeDecisions.map((dec) => (
             <div
               key={dec.id}
               onClick={() => onSelectClaim(dec)}
@@ -304,7 +310,7 @@ export const HandoverViewTab: React.FC<Props> = ({
           <p className="text-xs text-slate-400 mb-4">Who owns what, including conflicting mandates</p>
 
           <div className="space-y-3">
-            {data.ownership.map((item) => (
+            {safeOwnership.map((item) => (
               <div
                 key={item.id}
                 onClick={() => onSelectClaim(item)}
@@ -331,7 +337,7 @@ export const HandoverViewTab: React.FC<Props> = ({
           <p className="text-xs text-slate-400 mb-4">Known failure patterns, workarounds, external renewals</p>
 
           <div className="space-y-3">
-            {[...data.risks, ...data.dependencies].map((item) => (
+            {[...safeRisks, ...safeDependencies].map((item) => (
               <div
                 key={item.id}
                 onClick={() => onSelectClaim(item)}

@@ -16,11 +16,12 @@ export const QuestionsForLeaverTab: React.FC<Props> = ({
   onQuestionsUpdated,
   onProceedToReview,
 }) => {
+  const safeQuestions = Array.isArray(questions) ? questions : [];
   const [activeAnswers, setActiveAnswers] = useState<{ [id: string]: string }>({});
   const [submittingId, setSubmittingId] = useState<string | null>(null);
 
-  const answeredCount = questions.filter((q) => q.is_answered).length;
-  const totalCount = questions.length;
+  const answeredCount = safeQuestions.filter((q) => q.is_answered).length;
+  const totalCount = safeQuestions.length;
   const progressPercent = totalCount > 0 ? Math.round((answeredCount / totalCount) * 100) : 0;
 
   const handleAnswerSubmit = async (questionId: string) => {
@@ -98,12 +99,12 @@ export const QuestionsForLeaverTab: React.FC<Props> = ({
 
       {/* Questions Feed */}
       <div className="space-y-4">
-        {questions.length === 0 ? (
+        {safeQuestions.length === 0 ? (
           <div className="p-12 text-center border border-dashed border-slate-800 rounded-2xl text-slate-400 text-sm">
             No gaps or conflicting claims detected!
           </div>
         ) : (
-          questions.map((q, idx) => (
+          safeQuestions.map((q, idx) => (
             <div
               key={q.id}
               className={`p-5 rounded-2xl border transition ${

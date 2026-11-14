@@ -18,20 +18,21 @@ export const ReconstructVerifyTab: React.FC<Props> = ({
   onSelectClaim,
   onProceedToQuestions,
 }) => {
+  const safeClaims = Array.isArray(claims) ? claims : [];
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedStatus, setSelectedStatus] = useState<string>('all');
 
-  const filteredClaims = claims.filter((c) => {
+  const filteredClaims = safeClaims.filter((c) => {
     if (selectedCategory !== 'all' && c.category !== selectedCategory) return false;
     if (selectedStatus !== 'all' && c.status !== selectedStatus) return false;
     return true;
   });
 
   const countsByStatus = {
-    Verified: claims.filter((c) => c.status === 'Verified').length,
-    Inferred: claims.filter((c) => c.status === 'Inferred').length,
-    Conflicting: claims.filter((c) => c.status === 'Conflicting').length,
-    Missing: claims.filter((c) => c.status === 'Missing').length,
+    Verified: safeClaims.filter((c) => c.status === 'Verified').length,
+    Inferred: safeClaims.filter((c) => c.status === 'Inferred').length,
+    Conflicting: safeClaims.filter((c) => c.status === 'Conflicting').length,
+    Missing: safeClaims.filter((c) => c.status === 'Missing').length,
   };
 
   const categories: { id: string; label: string }[] = [

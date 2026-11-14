@@ -19,6 +19,7 @@ export const ReviewGateTab: React.FC<Props> = ({
   onSelectClaim,
   onProceedToHandover,
 }) => {
+  const safeClaims = Array.isArray(claims) ? claims : [];
   const [editingClaimId, setEditingClaimId] = useState<string | null>(null);
   const [editTitle, setEditTitle] = useState('');
   const [editDescription, setEditDescription] = useState('');
@@ -162,12 +163,12 @@ export const ReviewGateTab: React.FC<Props> = ({
       <div className="space-y-3">
         <div className="flex items-center justify-between px-1">
           <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-            Review Claims & Proof ({claims.length} claims)
+            Review Claims & Proof ({safeClaims.length} claims)
           </h3>
           <span className="text-[11px] text-slate-400">All edits are tracked in the version audit log</span>
         </div>
 
-        {claims.map((claim) => {
+        {safeClaims.map((claim) => {
           const isEditing = editingClaimId === claim.id;
 
           return (

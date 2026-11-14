@@ -74,10 +74,12 @@ export default function Home() {
         api.getQuestions(projId),
         api.getProject(projId),
       ]);
-      setSources(srcs);
-      setClaims(clms);
-      setQuestions(qsts);
-      setActiveProject(updatedProj);
+      setSources(Array.isArray(srcs) ? srcs : []);
+      setClaims(Array.isArray(clms) ? clms : []);
+      setQuestions(Array.isArray(qsts) ? qsts : []);
+      if (updatedProj && typeof updatedProj === 'object' && 'id' in updatedProj) {
+        setActiveProject(updatedProj);
+      }
     } catch (err) {
       console.error('Error loading project data:', err);
     }
@@ -142,7 +144,9 @@ export default function Home() {
     }
   };
 
-  const unansweredCount = questions.filter((q) => !q.is_answered).length;
+  const unansweredCount = Array.isArray(questions)
+    ? questions.filter((q) => !q.is_answered).length
+    : 0;
   const isApproved = activeProject?.status === 'Approved' || activeProject?.status === 'HandedOver';
 
   return (

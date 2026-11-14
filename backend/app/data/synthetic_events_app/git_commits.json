@@ -1,0 +1,33 @@
+{
+  "repository": "campus-student-club/events-app-backend",
+  "default_branch": "main",
+  "commits": [
+    {
+      "sha": "9a3f2b1",
+      "author": "Alex Rivera <alex.rivera@university.edu>",
+      "date": "2026-09-14",
+      "message": "feat(auth): integrate Firebase Auth SDK and middleware validation"
+    },
+    {
+      "sha": "6c4e1d8",
+      "author": "Alex Rivera <alex.rivera@university.edu>",
+      "date": "2026-10-04",
+      "message": "fix(redis): implement distributed lock with 60s timeout for seat reservations"
+    },
+    {
+      "sha": "3b8a9f0",
+      "author": "Alex Rivera <alex.rivera@university.edu>",
+      "date": "2026-10-29",
+      "message": "wip: ticket concurrency schema migration (missing rollback downgrade script)"
+    }
+  ],
+  "open_pull_requests": [
+    {
+      "number": 42,
+      "title": "feat(tickets): distributed seat locking and reservation queue",
+      "author": "alex.rivera",
+      "status": "OPEN",
+      "notes": "Half-done PR. Needs test coverage under burst load and database rollback migration script before merging."
+    }
+  ]
+}

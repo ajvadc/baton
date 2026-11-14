@@ -1,0 +1,38 @@
+[
+  {
+    "channel": "backend-dev",
+    "timestamp": "14 Sep 2026 14:15",
+    "user": "alex.rivera",
+    "text": "Hey team, looking into our auth requirements for the Events App. I strongly propose we use Firebase Auth instead of building a custom login system from scratch. It saves us 3 weeks of work and provides social sign-in automatically."
+  },
+  {
+    "channel": "backend-dev",
+    "timestamp": "14 Sep 2026 14:32",
+    "user": "priya.sharma",
+    "text": "@alex.rivera Agreed. Let's document this in ADR 01 and confirm in Friday's engineering sync. We can't afford to debug custom token invalidation right before fest launch."
+  },
+  {
+    "channel": "backend-dev",
+    "timestamp": "25 Oct 2026 11:05",
+    "user": "rohan.patel",
+    "text": "@alex.rivera Reminder: who is handling the payment gateway renewal with Stripe/Razorpay? In the task board I marked Alex as primary owner for billing integration."
+  },
+  {
+    "channel": "backend-dev",
+    "timestamp": "25 Oct 2026 11:22",
+    "user": "alex.rivera",
+    "text": "Wait, no, Rohan Patel owns the payment gateway renewal! I only configured the test webhook endpoints. The legal account and renewal card are tied to club operations and Rohan."
+  },
+  {
+    "channel": "backend-dev",
+    "timestamp": "02 Nov 2026 16:40",
+    "user": "alex.rivera",
+    "text": "CRITICAL RISK: Notice during staging tests - Stripe webhook times out intermittently during burst traffic (>300 concurrent requests). The workaround for now is to restart the celery background worker container, but we need an idempotent queue consumer before prod."
+  },
+  {
+    "channel": "backend-dev",
+    "timestamp": "05 Nov 2026 09:12",
+    "user": "alex.rivera",
+    "text": "Also heads up: The Twilio SMS alert service is currently using my student trial account (alex.rivera@university.edu). If I leave, SMS OTPs will fail unless someone migrates it to the club treasury master credit card by December 1!"
+  }
+]

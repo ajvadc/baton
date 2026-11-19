@@ -3,17 +3,29 @@
 
 > **Turns scattered project activity into a reviewed, role-appropriate handover when a team member leaves.**
 
+**Team Name:** AstraX  
+**Live Application:** [https://baton-teal.vercel.app](https://baton-teal.vercel.app)  
+**GitHub Repository:** [https://github.com/ajvadc/baton](https://github.com/ajvadc/baton)  
+
 [![Next.js](https://img.shields.io/badge/Frontend-Next.js%20%7C%20React%20%7C%20TailwindCSS-000000?style=for-the-badge&logo=nextdotjs)](https://nextjs.org)
 [![FastAPI](https://img.shields.io/badge/Backend-Python%20%7C%20FastAPI-009688?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com)
+[![Vercel](https://img.shields.io/badge/Production-Live%20on%20Vercel-success?style=for-the-badge&logo=vercel)](https://baton-teal.vercel.app)
 [![Docker](https://img.shields.io/badge/Deployment-Docker%20%7C%20Docker--Compose-2496ED?style=for-the-badge&logo=docker)](https://docker.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-amber.svg?style=for-the-badge)](LICENSE)
 
 ---
 
-## 👥 The Team
-- **Ajvad Cheniyath** – *Backend, AI extraction and evidence pipeline*
-- **Aksada R** – *Frontend, review interface and UX*
-- **D. Monic Prasanna** – *Permissions, research and documentation*
+## 👥 The Team — AstraX
+- **Ajvad Cheniyath** – *Team Leader, Backend, AI extraction, and live deployment*
+- **Aksada R** – *Frontend, review interface, and UX workflows*
+- **D. Monic Prasanna** – *Permissions, security analysis, and documentation*
+
+---
+
+## 🌟 Round 3 Major Improvements Delivered
+1. **Live GitHub Webhook & PR Diff Analysis**: Deep static and heuristic analysis of open PRs (PR #42) detecting missing rollback migrations (`downgrade()` pass), unmerged concurrency race conditions, and undocumented `.env` keys.
+2. **Automated Slack & Discord Leaver Q&A Bot**: Dispatches knowledge gaps to Slack Block Kit / Discord embeds; captures leaver responses in real time to verify claims without administrative friction.
+3. **Cryptographically Signed Handover PDF & Compliance Audit Export**: Client and server SHA-256 Merkle root digest calculation, print-ready formal PDF handover generation, and verifiable JSON audit certificates.
 
 ---
 
@@ -182,6 +194,10 @@ GITHUB_TOKEN=
 | `GET` | `/api/projects/{id}/claims` | Retrieves extracted claims with source citations |
 | `GET` | `/api/projects/{id}/questions` | Retrieves generated leaver questions for gaps & conflicts |
 | `POST` | `/api/questions/{id}/answer` | Leaver submits clarification to resolve conflict/gap |
+| `POST` | `/api/projects/{id}/github/analyze-pr` | Analyzes open PR diffs for unmerged risks and missing migrations |
+| `POST` | `/api/projects/{id}/github/convert-pr-risk-to-claim` | Converts flagged PR diff risk into an official handover claim |
+| `POST` | `/api/projects/{id}/leaver-bot/dispatch` | Dispatches pending gap questions to Slack/Discord Webhooks |
+| `POST` | `/api/projects/{id}/leaver-bot/simulate-reply` | Receives leaver chat replies and auto-verifies claims |
 | `POST` | `/api/projects/{id}/review/batch` | Reviewer batch accepts, rejects, or edits claims |
 | `POST` | `/api/projects/{id}/review/approve-handover` | Reviewer approves handover package (clears Review Gate) |
 | `GET` | `/api/projects/{id}/handover` | Role-filtered handover package (`?role=Successor\|Teammate\|Manager\|Observer`) |

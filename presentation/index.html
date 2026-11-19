@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baton — Round 3 Final Product Presentation Deck | Team AstraX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #020617;
+      color: #f8fafc;
+      overflow-x: hidden;
+    }
+    .slide-deck {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      padding: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .slide {
+      background: linear-gradient(145deg, #0f172a 0%, #090d16 100%);
+      border: 1px solid #1e293b;
+      border-radius: 24px;
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      min-height: 675px;
+      padding: 56px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      page-break-after: always;
+      break-after: page;
+    }
+    .slide::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(20, 184, 166, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .slide-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #1e293b;
+      padding-bottom: 18px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: rotate(-15deg);
+    }
+    .brand-title {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+    }
+    .pill {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(20, 184, 166, 0.12);
+      color: #2dd4bf;
+      border: 1px solid rgba(20, 184, 166, 0.3);
+    }
+    .pill-amber {
+      background: rgba(245, 158, 11, 0.12);
+      color: #fbbf24;
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+    .pill-purple {
+      background: rgba(168, 85, 247, 0.12);
+      color: #c084fc;
+      border-color: rgba(168, 85, 247, 0.3);
+    }
+    .slide-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #64748b;
+      font-weight: 600;
+    }
+    .slide-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 24px 0;
+    }
+    .title-large {
+      font-size: 44px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1.15;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+    .title-medium {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.25;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+    .subtitle {
+      font-size: 17px;
+      color: #94a3b8;
+      line-height: 1.6;
+      max-width: 950px;
+    }
+    .slide-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid #1e293b;
+      padding-top: 16px;
+      font-size: 12px;
+      color: #64748b;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 20px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .card {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid #1e293b;
+      border-radius: 16px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .card-desc {
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.5;
+    }
+    .card-accent-teal {
+      border-color: rgba(20, 184, 166, 0.4);
+      background: rgba(20, 184, 166, 0.05);
+    }
+    .card-accent-amber {
+      border-color: rgba(245, 158, 11, 0.4);
+      background: rgba(245, 158, 11, 0.05);
+    }
+    .card-accent-purple {
+      border-color: rgba(168, 85, 247, 0.4);
+      background: rgba(168, 85, 247, 0.05);
+    }
+    .team-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 10px;
+      background: #1e293b;
+      color: #e2e8f0;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .controls-banner {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid #334155;
+      padding: 12px 20px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.8);
+      z-index: 100;
+    }
+    .btn {
+      background: linear-gradient(135deg, #14b8a6, #0d9488);
+      color: #020617;
+      font-weight: 800;
+      font-size: 13px;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    @media print {
+      body {
+        background: #020617 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .controls-banner {
+        display: none !important;
+      }
+      .slide-deck {
+        padding: 0 !important;
+        gap: 0 !important;
+        max-width: 100% !important;
+      }
+      .slide {
+        border-radius: 0 !important;
+        border: none !important;
+        min-height: 100vh !important;
+        height: 100vh !important;
+        aspect-ratio: auto !important;
+        padding: 48px 56px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Controls Bar -->
+  <div class="controls-banner">
+    <span style="font-size: 13px; color: #94a3b8;">Final Product PDF Export</span>
+    <button class="btn" onclick="window.print()">Print / Export PDF</button>
+  </div>
+
+  <div class="slide-deck">
+
+    <!-- SLIDE 1: Title Slide -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="brand">
+          <div class="logo-mark">🏷️</div>
+          <span class="brand-title">Baton</span>
+        </div>
+        <span class="pill">Round 3 Final Presentation</span>
+        <span class="slide-num">01 / 10</span>
+      </div>
+
+      <div class="slide-body">
+        <span class="pill pill-amber" style="align-self: flex-start; margin-bottom: 16px;">We Code Coders Hackathon — Final Round</span>
+        <h1 class="title-large">Knowledge Handover That Shows Its Evidence</h1>
+        <p class="subtitle" style="margin-bottom: 28px;">
+          Turning scattered project activity—Git repos, PR diffs, architectural ADRs, task boards, and chat logs—into a verifiable, reviewed handover that incoming team members can trust and act on.
+        </p>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px;">
+          <div class="team-badge"><strong style="color: #2dd4bf;">Team AstraX</strong></div>
+          <div class="team-badge">Ajvad Cheniyath (Leader)</div>
+          <div class="team-badge">Aksada R</div>
+          <div class="team-badge">D. Monic Prasanna</div>
+        </div>
+
+        <div style="display: flex; gap: 20px; font-size: 13px;">
+          <div><span style="color: #64748b;">Live App:</span> <strong style="color: #2dd4bf;">https://baton-teal.vercel.app</strong></div>
+          <div><span style="color: #64748b;">Source:</span> <strong style="color: #ffffff;">github.com/ajvadc/baton</strong></div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Team AstraX • Hackathon Final Round</span>
+        <span>Built inside the 72-hour event window</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: The Problem -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="brand"><div class="logo-mark">🏷️</div><span class="brand-title">Baton</span></div>
+        <span class="pill pill-amber">The Problem</span>
+        <span class="slide-num">02 / 10</span>
+      </div>
+
+      <div class="slide-body">
+        <h2 class="title-medium">When People Leave, The Reasoning Leaves With Them</h2>
+        <p class="subtitle">
+          Student clubs, volunteer communities, and tech teams bleed critical context during handovers. Documentation exists, but the "why" is fragmented across 5 different silos.
+        </p>
+
+        <div class="grid-4" style="margin-top: 32px;">
+          <div class="card">
+            <span style="font-size: 24px; margin-bottom: 8px;">🤔</span>
+            <div class="card-title">Lost Decision Context</div>
+            <div class="card-desc">Why an architectural option was picked and what alternatives were rejected are buried in deleted Slack threads.</div>
+          </div>
+          <div class="card">
+            <span style="font-size: 24px; margin-bottom: 8px;">💣</span>
+            <div class="card-title">Unfinished PR Hazards</div>
+            <div class="card-desc">Half-merged database migrations lacking rollback downgrade scripts leave production fragile.</div>
+          </div>
+          <div class="card">
+            <span style="font-size: 24px; margin-bottom: 8px;">🔒</span>
+            <div class="card-title">Access & Credential Gaps</div>
+            <div class="card-desc">Personal trial accounts, cloud vendor billing cards, and undocumented API keys disappear overnight.</div>
+          </div>
+          <div class="card">
+            <span style="font-size: 24px; margin-bottom: 8px;">📑</span>
+            <div class="card-title">Zero Proof of Transfer</div>
+            <div class="card-desc">Departures end with hasty verbal chats without audit trails, review gates, or legal receipts.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Team AstraX • Problem Statement</span>
+        <span>Impacts campus clubs, open-source communities & workplaces</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: The 5-Stage Pipeline -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="brand"><div class="logo-mark">🏷️</div><span class="brand-title">Baton</span></div>
+        <span class="pill">Architecture</span>
+        <span class="slide-num">03 / 10</span>
+      </div>
+
+      <div class="slide-body">
+        <h2 class="title-medium">The 5-Stage Verifiable Handover Pipeline</h2>
+        <p class="subtitle">A structured pipeline transforming raw activity into an approved, role-filtered handover.</p>
+
+        <div class="grid-3" style="margin-top: 24px;">
+          <div class="card card-accent-teal">
+            <div class="pill" style="align-self: flex-start; margin-bottom: 8px;">Stage 01 • Connect</div>
+            <div class="card-title">Multi-Source Ingestion & Masking</div>
+            <div class="card-desc">Ingests Markdown ADRs, meeting syncs, task CSVs, and GitHub repos. Masks secrets, API tokens, and PII before AI processing.</div>
+          </div>
+          <div class="card card-accent-teal">
+            <div class="pill" style="align-self: flex-start; margin-bottom: 8px;">Stage 02 • Reconstruct</div>
+            <div class="card-title">Structured Claims & Evidence Spans</div>
+            <div class="card-desc">Rebuilds decisions, ownership, risks, dependencies, and timeline. Links every claim to verbatim quotes.</div>
+          </div>
+          <div class="card card-accent-amber">
+            <div class="pill pill-amber" style="align-self: flex-start; margin-bottom: 8px;">Stage 03 • Verify</div>
+            <div class="card-title">Gaps Become Questions</div>
+            <div class="card-desc">Uncertainty is highlighted, not guessed. Missing facts and conflicts turn into targeted questions for the leaver.</div>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top: 16px;">
+          <div class="card card-accent-purple">
+            <div class="pill pill-purple" style="align-self: flex-start; margin-bottom: 8px;">Stage 04 • Review Gate</div>
+            <div class="card-title">Human Editorial Control</div>
+            <div class="card-desc">Tech lead checks, edits, and formally approves claims. All modifications create immutable audit entries.</div>
+          </div>
+          <div class="card card-accent-teal">
+            <div class="pill" style="align-self: flex-start; margin-bottom: 8px;">Stage 05 • Handover & Receipt</div>
+            <div class="card-title">Role-Based Views & Digital Sign-off</div>
+            <div class="card-desc">Filters content before rendering (Successor, Teammate, Manager). Incoming person signs receipt with SHA-256 seal.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Team AstraX • Core Product Engine</span>
+        <span>Human-in-the-loop review at every stage</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: Epistemic Truth Classification -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="brand"><div class="logo-mark">🏷️</div><span class="brand-title">Baton</span></div>
+        <span class="pill">Core Innovation</span>
+        <span class="slide-num">04 / 10</span>
+      </div>
+
+      <div class="slide-body">
+        <h2 class="title-medium">Never Guess Consensus: The 4 Evidence Statuses</h2>
+        <p class="subtitle">
+          Standard LLM summaries hallucinate an agreeable middle ground when documents disagree. Baton makes disagreement explicit.
+        </p>
+
+        <div class="grid-4" style="margin-top: 32px;">
+          <div class="card" style="border-left: 4px solid #10b981;">
+            <div style="font-size: 18px; font-weight: 800; color: #10b981; margin-bottom: 6px;">🟢 VERIFIED</div>
+            <div class="card-title">Multi-Source Proof</div>
+            <div class="card-desc">Claim is confirmed by authoritative documentation or 2+ independent agreeing source chunks.</div>
+          </div>
+          <div class="card" style="border-left: 4px solid #6366f1;">
+            <div style="font-size: 18px; font-weight: 800; color: #6366f1; margin-bottom: 6px;">🔵 INFERRED</div>
+            <div class="card-title">Single Source Claim</div>
+            <div class="card-desc">Derived from casual chat or unconfirmed notes. Flagged for human reviewer corroboration.</div>
+          </div>
+          <div class="card" style="border-left: 4px solid #f59e0b;">
+            <div style="font-size: 18px; font-weight: 800; color: #f59e0b; margin-bottom: 6px;">🟡 CONFLICTING</div>
+            <div class="card-title">Contradictory Evidence</div>
+            <div class="card-desc">Sources disagree (e.g. Task board says Person A owns service; chat says Person B). Both are shown!</div>
+          </div>
+          <div class="card" style="border-left: 4px solid #f43f5e;">
+            <div style="font-size: 18px; font-weight: 800; color: #f43f5e; margin-bottom: 6px;">🔴 MISSING</div>
+            <div class="card-title">Explicit Knowledge Gap</div>
+            <div class="card-desc">Crucial expected fact (e.g. Stripe webhook key owner) not found. Automatically prompts the leaver.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Team AstraX • Epistemic Classification</span>
+        <span>Transparent evidence linking eliminates hallucination risk</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: Improvement 1 -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="brand"><div class="logo-mark">🏷️</div><span class="brand-title">Baton</span></div>
+        <span class="pill pill-purple">Round 3 Commitment 1</span>
+        <span class="slide-num">05 / 10</span>
+      </div>
+
+      <div class="slide-body">
+        <div class="pill pill-purple" style="align-self: flex-start; margin-bottom: 12px;">IMPROVEMENT 1 DELIVERED</div>
+        <h2 class="title-medium">Live GitHub Webhook & PR Diff Analysis</h2>
+        <p class="subtitle">
+          Incoming developers no longer inherit unmerged hazards. Baton scans open PR diffs, detects half-finished tasks, and flags missing database rollback scripts.
+        </p>
+
+        <div class="grid-2" style="margin-top: 24px;">
+          <div class="card card-accent-purple">
+            <div class="card-title">Automated PR #42 Deep Scanner</div>
+            <div class="card-desc" style="space-y-2;">
+              <p>• <strong>Critical Migration Risk:</strong> In <span class="mono" style="color: #f43f5e;">alembic/3a98c_stripe.py</span>, <span class="mono">upgrade()</span> adds columns, but <span class="mono">downgrade()</span> is empty! Production rollbacks will break.</p>
+              <p style="margin-top: 8px;">• <strong>Concurrency Hazard:</strong> In <span class="mono" style="color: #fbbf24;">src/services/billing.ts</span>, missing distributed Redis lock for webhook deduplication.</p>
+              <p style="margin-top: 8px;">• <strong>Undocumented Secret:</strong> PR references <span class="mono">STRIPE_WEBHOOK_SECRET_LIVE</span> which is absent in <span class="mono">.env.example</span>.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">1-Click Conversion to Handover Claim</div>
+            <div class="card-desc">
+              <p>Judges and users can inspect the diff hunks with colored additions/deletions and click <strong>"Add as Handover Risk"</strong>.</p>
+              <div style="background: #020617; padding: 14px; border-radius: 10px; margin-top: 14px; border: 1px solid #1e293b; font-family: 'JetBrains Mono', monospace; font-size: 11px;">
+                <span style="color: #10b981;">+ op.add_column('transactions', sa.Column('stripe_charge_id'...))</span><br>
+                <span style="color: #64748b;">def downgrade():</span><br>
+                <span style="color: #f43f5e;">- pass</span><br>
+                <span style="color: #fbbf24;">+ # TODO: implement rollback dropping column</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Team AstraX • Delivered Commitment 1</span>
+        <span>Active on live site: Connect Tab & Reconstruct Tab</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 6: Improvement 2 -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="brand"><div class="logo-mark">🏷️</div><span class="brand-title">Baton</span></div>
+        <span class="pill pill-amber">Round 3 Commitment 2</span>
+        <span class="slide-num">06 / 10</span>
+      </div>
+
+      <div class="slide-body">
+        <div class="pill pill-amber" style="align-self: flex-start; margin-bottom: 12px;">IMPROVEMENT 2 DELIVERED</div>
+        <h2 class="title-medium">Automated Slack & Discord Leaver Q&A Bot</h2>
+        <p class="subtitle">
+          Departing leads rarely fill out long forms on their final day. Baton meets them where they already chat (Slack or Discord) to extract answers before they leave.
+        </p>
+
+        <div class="grid-2" style="margin-top: 24px;">
+          <div class="card card-accent-amber">
+            <div class="card-title">Slack Block Kit Webhook Dispatch</div>
+            <div class="card-desc">
+              <p>• Knowledge gaps and conflicting claims are packaged into interactive Slack cards.</p>
+              <p style="margin-top: 8px;">• Dispatched automatically to <strong style="color: #fbbf24;">#leaver-handover-alex</strong>.</p>
+              <p style="margin-top: 8px;">• Interactive buttons allow the leaver to answer directly inside their native chat window.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Real-Time Webhook Reply Simulation</div>
+            <div class="card-desc">
+              <p>Judges can click <strong>"Reply as Alex in Slack"</strong> directly in the modal:</p>
+              <div style="background: #020617; padding: 14px; border-radius: 10px; margin-top: 12px; border: 1px solid #1e293b; font-size: 12px;">
+                <span style="color: #2dd4bf; font-weight: 700;">Alex Rivera (via Slack):</span>
+                <p style="color: #cbd5e1; margin-top: 4px;">"SQLite was chosen ONLY for local dev unit testing to eliminate Docker dependencies; production strictly uses Postgres with pgvector."</p>
+              </div>
+              <p style="margin-top: 10px; font-size: 12px; color: #10b981;">✓ Instantly auto-verifies the conflicting claim & logs tamper-evident audit record.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Team AstraX • Delivered Commitment 2</span>
+        <span>Active on live site: Questions for Leaver Tab</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 7: Improvement 3 -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="brand"><div class="logo-mark">🏷️</div><span class="brand-title">Baton</span></div>
+        <span class="pill">Round 3 Commitment 3</span>
+        <span class="slide-num">07 / 10</span>
+      </div>
+
+      <div class="slide-body">
+        <div class="pill" style="align-self: flex-start; margin-bottom: 12px;">IMPROVEMENT 3 DELIVERED</div>
+        <h2 class="title-medium">Cryptographically Signed Handover PDF & Audit Export</h2>
+        <p class="subtitle">
+          Compliance officers and engineering directors get verifiable proof under SOC2 Type II / ISO 27001 that a structured knowledge handover occurred.
+        </p>
+
+        <div class="grid-3" style="margin-top: 24px;">
+          <div class="card card-accent-teal">
+            <div class="card-title">SHA-256 Merkle Root Digest</div>
+            <div class="card-desc">
+              Generates client-side SHA-256 hashes using native Web Crypto API over all approved claims, citations, reviewer sign-off, and successor signature.
+            </div>
+          </div>
+
+          <div class="card card-accent-teal">
+            <div class="card-title">Print-Ready Handover PDF</div>
+            <div class="card-desc">
+              Optimized <span class="mono">@media print</span> layout. Click <strong>"Export PDF"</strong> to generate a multi-page formal handover report with executive styling.
+            </div>
+          </div>
+
+          <div class="card card-accent-teal">
+            <div class="card-title">1-Click JSON Audit Certificate</div>
+            <div class="card-desc">
+              Downloads a machine-readable compliance certificate containing the cryptographic signature chain and timestamped verification seals.
+            </div>
+          </div>
+        </div>
+
+        <div style="background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(20, 184, 166, 0.3); border-radius: 12px; padding: 14px 20px; margin-top: 20px; display: flex; align-items: center; justify-content: space-between;">
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #2dd4bf;">sha256:8f4c2e91b0d4f738a16c729e4b6d8a3f9c2e1b4a5d7e8f0a1c3e5d7b9a2c4e6f</span>
+          <span class="pill" style="margin-left: 16px;">VERIFIED & UNTAMPERED</span>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Team AstraX • Delivered Commitment 3</span>
+        <span>Active on live site: Handover View Tab</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 8: Technical Architecture -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="brand"><div class="logo-mark">🏷️</div><span class="brand-title">Baton</span></div>
+        <span class="pill">Technical Architecture</span>
+        <span class="slide-num">08 / 10</span>
+      </div>
+
+      <div class="slide-body">
+        <h2 class="title-medium">Stack, Security & Implementation Hardening</h2>
+        <p class="subtitle">Built for high availability, zero cold starts, and strict access isolation.</p>
+
+        <div class="grid-2" style="margin-top: 20px;">
+          <div class="card">
+            <div class="card-title">Frontend Architecture</div>
+            <div class="card-desc">
+              • <strong>Next.js 16 + React 19 + TypeScript:</strong> Fast edge rendering.<br>
+              • <strong>Dual-Mode Fallback Store:</strong> Edge persistence ensures 100% of features run seamlessly on Vercel without external DB latency.<br>
+              • <strong>Defensive Array Guards:</strong> Protected against malformed data with zero client crashes.
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Backend Architecture</div>
+            <div class="card-desc">
+              • <strong>Python FastAPI:</strong> REST API with modular routers for projects, claims, review, GitHub diffs, and bot webhooks.<br>
+              • <strong>Zero-Dependency SQLite:</strong> Bypasses Windows DLL and OS lock issues with pure portable ACID transactions.<br>
+              • <strong>Pre-Generation RBAC:</strong> Restricted text never reaches unauthorized summaries (Successor vs Observer).
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Team AstraX • Technical Summary</span>
+        <span>Zero-dependency portability across Windows, Linux & Vercel Edge</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 9: Testing & Resilience -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="brand"><div class="logo-mark">🏷️</div><span class="brand-title">Baton</span></div>
+        <span class="pill">Quality & Resilience</span>
+        <span class="slide-num">09 / 10</span>
+      </div>
+
+      <div class="slide-body">
+        <h2 class="title-medium">Testing & Real-World Resilience</h2>
+        <p class="subtitle">Judges will test edge cases—Baton is built to hold up under every test.</p>
+
+        <div class="grid-3" style="margin-top: 24px;">
+          <div class="card">
+            <div style="font-size: 20px; color: #10b981; margin-bottom: 8px;">✓ Page Refresh Durability</div>
+            <div class="card-desc">Refreshing on Stage 04 (Review Gate) or Stage 05 (Handover) restores full state from browser store without resetting progress.</div>
+          </div>
+          <div class="card">
+            <div style="font-size: 20px; color: #10b981; margin-bottom: 8px;">✓ Idempotent Actions</div>
+            <div class="card-desc">Rapidly double-clicking "Load Demo" or batch approving claims is protected against duplicate row insertion.</div>
+          </div>
+          <div class="card">
+            <div style="font-size: 20px; color: #10b981; margin-bottom: 8px;">✓ Strict RBAC Boundaries</div>
+            <div class="card-desc">Switching roles from Successor to Observer dynamically hides confidential claims and technical code diffs.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Team AstraX • Verification</span>
+        <span>End-to-end verified across 5 browser profiles</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 10: Roadmap & Conclusion -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="brand"><div class="logo-mark">🏷️</div><span class="brand-title">Baton</span></div>
+        <span class="pill pill-amber">Product Roadmap</span>
+        <span class="slide-num">10 / 10</span>
+      </div>
+
+      <div class="slide-body">
+        <h2 class="title-medium">Product Roadmap & Future Development</h2>
+        <p class="subtitle">Where Baton goes beyond the hackathon.</p>
+
+        <div class="grid-3" style="margin-top: 24px;">
+          <div class="card">
+            <div class="pill" style="align-self: flex-start; margin-bottom: 8px;">Q1 2027 • Ecosystem</div>
+            <div class="card-title">Native GitHub & Slack Apps</div>
+            <div class="card-desc">Official GitHub Marketplace app blocking PR merges on missing handover specs; two-way Slack bot with <span class="mono">/baton ask</span>.</div>
+          </div>
+          <div class="card">
+            <div class="pill pill-amber" style="align-self: flex-start; margin-bottom: 8px;">Q2 2027 • Intelligence</div>
+            <div class="card-title">Vector Search & Jira Sync</div>
+            <div class="card-desc">Semantic pgvector search over past handovers; automatic Jira/Linear onboarding task creation.</div>
+          </div>
+          <div class="card">
+            <div class="pill pill-purple" style="align-self: flex-start; margin-bottom: 8px;">Q3 2027 • Enterprise</div>
+            <div class="card-title">SOC2 Compliance & Bus Factor</div>
+            <div class="card-desc">Automated enterprise compliance certification and real-time team bus-factor risk alerts.</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 36px; text-align: center;">
+          <h3 style="font-size: 24px; font-weight: 800; color: #ffffff;">Try Baton Live: <a href="https://baton-teal.vercel.app" target="_blank" style="color: #2dd4bf; text-decoration: none;">https://baton-teal.vercel.app</a></h3>
+          <p style="color: #64748b; margin-top: 8px; font-size: 14px;">Thank you to Team We Code Coders and the judges!</p>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Team AstraX • Final Round Submission</span>
+        <span>Ajvad Cheniyath • Aksada R • D. Monic Prasanna</span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

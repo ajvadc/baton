@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { LeaverQuestion, Project } from '@/lib/types';
 import { api } from '@/lib/api';
-import { HelpCircle, CheckCircle2, Clock, AlertTriangle, Send, User, ChevronRight } from 'lucide-react';
+import { HelpCircle, CheckCircle2, Clock, AlertTriangle, Send, User, ChevronRight, Bot, Sparkles } from 'lucide-react';
+import { LeaverBotModal } from './LeaverBotModal';
 
 interface Props {
   project: Project;
@@ -19,6 +20,7 @@ export const QuestionsForLeaverTab: React.FC<Props> = ({
   const safeQuestions = Array.isArray(questions) ? questions : [];
   const [activeAnswers, setActiveAnswers] = useState<{ [id: string]: string }>({});
   const [submittingId, setSubmittingId] = useState<string | null>(null);
+  const [showBotModal, setShowBotModal] = useState(false);
 
   const answeredCount = safeQuestions.filter((q) => q.is_answered).length;
   const totalCount = safeQuestions.length;
@@ -58,13 +60,23 @@ export const QuestionsForLeaverTab: React.FC<Props> = ({
           </p>
         </div>
 
-        <button
-          onClick={onProceedToReview}
-          className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-slate-950 font-bold text-xs transition shadow-lg shadow-emerald-500/20 shrink-0"
-        >
-          <span>Proceed to Review Gate</span>
-          <ChevronRight className="w-4 h-4" />
-        </button>
+        <div className="flex items-center gap-2 flex-wrap">
+          <button
+            onClick={() => setShowBotModal(true)}
+            className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-300 font-bold text-xs transition shrink-0"
+          >
+            <Bot className="w-4 h-4 text-amber-400" />
+            <span>Dispatch via Slack/Discord Bot</span>
+          </button>
+
+          <button
+            onClick={onProceedToReview}
+            className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-slate-950 font-bold text-xs transition shadow-lg shadow-emerald-500/20 shrink-0"
+          >
+            <span>Proceed to Review Gate</span>
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
       </div>
 
       {/* Resolution Progress Bar */}
@@ -183,6 +195,15 @@ export const QuestionsForLeaverTab: React.FC<Props> = ({
           ))
         )}
       </div>
+
+      {/* Slack / Discord Leaver Bot Modal (Improvement 2) */}
+      <LeaverBotModal
+        project={project}
+        questions={safeQuestions}
+        isOpen={showBotModal}
+        onClose={() => setShowBotModal(false)}
+        onQuestionsUpdated={onQuestionsUpdated}
+      />
     </div>
   );
 };

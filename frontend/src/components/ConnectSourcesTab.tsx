@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Source, Project } from '@/lib/types';
 import { api } from '@/lib/api';
-import { Upload, GitBranch, FileText, MessageSquare, CheckSquare, Sparkles, Shield, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Upload, GitBranch, FileText, MessageSquare, CheckSquare, Sparkles, Shield, ArrowRight, CheckCircle2, GitPullRequest } from 'lucide-react';
+import { PRDiffAnalyzerModal } from './PRDiffAnalyzerModal';
 
 interface Props {
   project: Project;
@@ -22,6 +23,7 @@ export const ConnectSourcesTab: React.FC<Props> = ({
   const [repoUrl, setRepoUrl] = useState('');
   const [syncingGit, setSyncingGit] = useState(false);
   const [gitSuccess, setGitSuccess] = useState(false);
+  const [showPRModal, setShowPRModal] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -200,6 +202,18 @@ export const ConnectSourcesTab: React.FC<Props> = ({
               >
                 {syncingGit ? 'Syncing GitHub Repo...' : 'Sync Repository Activity'}
               </button>
+
+              <div className="pt-2 border-t border-slate-800/80 flex items-center justify-between">
+                <span className="text-[11px] text-purple-300 font-medium">PR Diff & Risk Scanner:</span>
+                <button
+                  type="button"
+                  onClick={() => setShowPRModal(true)}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 border border-purple-500/30 text-xs font-semibold transition"
+                >
+                  <GitPullRequest className="w-3.5 h-3.5" />
+                  <span>Scan PR #42 Diffs</span>
+                </button>
+              </div>
             </form>
           </div>
         </div>
@@ -260,6 +274,16 @@ export const ConnectSourcesTab: React.FC<Props> = ({
           </div>
         )}
       </div>
+
+      {/* GitHub PR Diff Analyzer Modal (Improvement 1) */}
+      <PRDiffAnalyzerModal
+        projectId={project.id}
+        isOpen={showPRModal}
+        onClose={() => setShowPRModal(false)}
+        onRiskImported={() => {
+          onSourcesUpdated();
+        }}
+      />
     </div>
   );
 };

@@ -16,7 +16,9 @@ from app.routes import (
     review,
     handover,
     audit,
-    demo
+    demo,
+    github_analysis,
+    leaver_bot
 )
 
 app = FastAPI(
@@ -46,6 +48,8 @@ app.include_router(review.router)
 app.include_router(handover.router)
 app.include_router(audit.router)
 app.include_router(demo.router)
+app.include_router(github_analysis.router)
+app.include_router(leaver_bot.router)
 
 @app.get("/")
 def root():

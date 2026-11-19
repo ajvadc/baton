@@ -16,7 +16,10 @@ import {
   ExternalLink,
   Users,
   Shield,
+  Printer,
+  Download,
 } from 'lucide-react';
+import { CryptographicAuditModal } from './CryptographicAuditModal';
 
 interface Props {
   projectId: string;
@@ -33,6 +36,7 @@ export const HandoverViewTab: React.FC<Props> = ({
   const [data, setData] = useState<HandoverPackage | null>(null);
   const [loading, setLoading] = useState(true);
   const [showSignModal, setShowSignModal] = useState(false);
+  const [showCryptoModal, setShowCryptoModal] = useState(false);
   const [recipientName, setRecipientName] = useState('Sam Chen (Successor)');
   const [signatureText, setSignatureText] = useState('Sam Chen');
   const [checkedItems, setCheckedItems] = useState<{ [id: string]: boolean }>({});
@@ -148,17 +152,37 @@ export const HandoverViewTab: React.FC<Props> = ({
               ))}
             </div>
 
-            <button
-              onClick={() => setShowSignModal(true)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl font-bold text-xs transition shadow-lg shrink-0 ${
-                isReceiptAcknowledged
-                  ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
-                  : 'bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-slate-950 shadow-teal-500/20'
-              }`}
-            >
-              <FileSignature className="w-4 h-4" />
-              <span>{isReceiptAcknowledged ? 'Receipt Signed & Logged' : 'Acknowledge Receipt'}</span>
-            </button>
+            <div className="flex items-center gap-2 flex-wrap">
+              <button
+                onClick={() => window.print()}
+                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 text-xs font-semibold transition"
+                title="Print or Save as PDF"
+              >
+                <Printer className="w-3.5 h-3.5 text-teal-400" />
+                <span>Export PDF</span>
+              </button>
+
+              <button
+                onClick={() => setShowCryptoModal(true)}
+                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-teal-500/10 hover:bg-teal-500/20 border border-teal-500/30 text-teal-300 text-xs font-semibold transition"
+                title="View Cryptographic Certificate & SHA-256 Digest"
+              >
+                <ShieldCheck className="w-3.5 h-3.5 text-teal-400" />
+                <span>Audit Certificate</span>
+              </button>
+
+              <button
+                onClick={() => setShowSignModal(true)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl font-bold text-xs transition shadow-lg shrink-0 ${
+                  isReceiptAcknowledged
+                    ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
+                    : 'bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-slate-950 shadow-teal-500/20'
+                }`}
+              >
+                <FileSignature className="w-4 h-4" />
+                <span>{isReceiptAcknowledged ? 'Receipt Signed & Logged' : 'Acknowledge Receipt'}</span>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -446,6 +470,13 @@ export const HandoverViewTab: React.FC<Props> = ({
           </div>
         </div>
       )}
+
+      {/* Cryptographic Audit Certificate Modal (Improvement 3) */}
+      <CryptographicAuditModal
+        data={data}
+        isOpen={showCryptoModal}
+        onClose={() => setShowCryptoModal(false)}
+      />
     </div>
   );
 };
